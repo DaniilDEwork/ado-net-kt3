@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - КТ-3</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <div class="container">
+            <p class="site-title">КТ-3 - HttpResponse</p>
+            <nav aria-label="Основное меню">
+                <a asp-controller="Home" asp-action="Index">Главная</a>
+                <a asp-controller="Home" asp-action="Demo" asp-route-id="Text">Текст</a>
+                <a asp-controller="Home" asp-action="Demo" asp-route-id="Html">HTML</a>
+                <a asp-controller="Home" asp-action="Demo" asp-route-id="Json">JSON</a>
+                <a asp-controller="Home" asp-action="Demo" asp-route-id="File">Файл</a>
+                <a asp-controller="Home" asp-action="Demo" asp-route-id="Status">Статус</a>
+                <a asp-controller="Home" asp-action="Demo" asp-route-id="Cookie">Cookie</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container content">
+        @RenderBody()
+    </main>
+    <footer class="container">
+        ASP.NET Core MVC
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

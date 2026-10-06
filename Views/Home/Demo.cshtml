@@ -1,0 +1,46 @@
+@model string
+
+<h1>@ViewData["Title"]</h1>
+
+<p>Ответ контроллера по адресу <a href="/Test/@Model" target="_blank" rel="noopener">/Test/@Model</a></p>
+
+<div id="responseDemo" data-action="@Model">
+    <dl class="response-info">
+        <dt>Статус ответа</dt>
+        <dd id="responseCode">Загрузка</dd>
+        <dt>Content-Type</dt>
+        <dd id="responseType">Загрузка</dd>
+        @if (Model == "File")
+        {
+            <dt>Имя файла</dt>
+            <dd id="responseFile">Загрузка</dd>
+        }
+        @if (Model == "Cookie")
+        {
+            <dt>Cookie в браузере</dt>
+            <dd id="responseCookie">Загрузка</dd>
+        }
+    </dl>
+
+    <h2>Результат</h2>
+    <pre id="responseBody" class="preview" aria-live="polite">Загрузка ответа</pre>
+
+    @if (Model == "Html")
+    {
+        <iframe id="htmlPreview" class="html-preview" title="Отображение HTML-ответа" sandbox hidden></iframe>
+    }
+
+    <p id="requestError" class="error" role="alert" hidden></p>
+
+    <div class="actions">
+        <button type="button" id="repeatRequest">Повторить запрос</button>
+        @if (Model == "File")
+        {
+            <a href="/Test/File" class="button">Скачать test.txt</a>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/response-demo.js" asp-append-version="true"></script>
+}
